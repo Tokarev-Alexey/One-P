@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html>
     <head>
-        <title>Ola's blog</title>
+        <title>One-P</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-        <p>Hi there!</p>
-        <p>It works!</p>
+        <div class="page-header">
+            <h1><a href="/">New Blog</a></h1>
+        </div>
+
+        <div class="post">
+            {% for post in posts %}
+                <div>
+                    <h2><a href="">{{ post.title }}</a></h2>
+                    <p1>published: {{ post.published_date }}</p1><br>
+                    <p2>Text: {{ post.text|linebreaksbr }}</p2>
+                </div>
+            {% endfor %}
+        </div>
     </body>
 </html>
