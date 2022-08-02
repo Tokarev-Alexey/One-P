@@ -17,16 +17,22 @@
 
 .date {
     color: #010400;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Marck Script', cursive;
     font-size: 110%
-}
-
-.save {
-    float: right;
 }
 
 .post-form textarea, .post-form input {
     width: 100%;
+    font-family: 'Marck Script', cursive;
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+}
+
+.save {
+    float: left;
+    font-family: 'Marck Script', cursive;
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
@@ -48,6 +54,6 @@
 
 .post p {
     color: #010400;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Marck Script', cursive;
     font-size: 130%
 }
