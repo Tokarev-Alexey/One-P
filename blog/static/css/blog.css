@@ -57,3 +57,10 @@ h1 {
     font-family: 'Marck Script', cursive;
     font-size: 130%
 }
+
+.author {
+    float: right;
+    font-family: 'Marck Script', cursive;
+    font-size: 130%;
+    margin-top: 10px;
+}
