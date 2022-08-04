@@ -10,13 +10,13 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'text',)
         widgets = {
             'title': TextInput(attrs={
-                'class': "form-control",
+                'class': 'form-title',
                 'style': 'max-width: 600px;',
                 'placeholder': 'Title',
             }),
             'text': Textarea(attrs={
-                'class': "form-control",
+                'class': 'form-text',
                 'style': 'max-width: 600px;',
-                'placeholder': 'Text'
+                'placeholder': 'Text',
             })
         }

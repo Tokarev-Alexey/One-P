@@ -4,10 +4,10 @@
     <h1>New Post</h1>
     <form method="POST" class="post-form">
         {% csrf_token %}
-        <div class="form-group">
+        <div class="form-title">
             {{ form.title }}
         </div>
-        <div class="form-group">
+        <div class="form-text">
             {{ form.text }}
         </div>
         <div>
