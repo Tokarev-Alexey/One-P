@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="post">
-        <div class="author"><a href="{% url 'author_list' id=post.author_id %}"> Author: {{ post.author }}</a></div>
+        <div class="author"><a href="{% url 'author_list' id=post.author_id value=post.author %}"> Author: {{ post.author }}</a></div>
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
         {% if post.published_date %}

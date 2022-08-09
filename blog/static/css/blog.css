@@ -9,6 +9,8 @@
     font-size: 36pt;
     text-decoration: none;
     font-family: 'Lobster', cursive;
+    padding-bottom: 0px;
+    margin-top: 10px;
 }
 .page-header h1 a:hover {
     color: 908d8d;
@@ -43,8 +45,8 @@ button:active, button:focus, input:active, input:focus, textarea:active, textare
 .top-menu, .top-menu:visited {
     color: #ffffff;
     float: right;
-    font-size: 26pt;
-    margin-right: 20px;
+    font-size: 20pt;
+    margin-right: 0px;
 }
 
 .top-menu:hover{
@@ -85,6 +87,12 @@ button:active, button:focus, input:active, input:focus, textarea:active, textare
 .author a:hover {
     color: 908d8d;
 }
+
+.title_author h1 {
+    float: right;
+
+}
+
 .form-title input{
 font-family: 'Marck Script', cursive;
     resize: vertical;
