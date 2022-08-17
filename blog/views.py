@@ -1,10 +1,35 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
+from django.views.generic import UpdateView
+
 from .models import Post
 from .forms import PostForm
 from django.shortcuts import redirect
 from .forms import UserRegistrationForm
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Создание нового юзера, но пока без сохранения (commit=False).
+            new_user = user_form.save(commit=False)
+            # Установка выбранного пароля.
+            new_user.set_password(user_form.cleaned_data['password'])
+            # Сохранение юзера.
+            new_user.save()
+            return redirect('login')
+    else:
+        user_form = UserRegistrationForm()
+    return render(request, 'registration/register.html', {'user_form': user_form})
+
+
+# @login_required
+def logout(request):
+    request.session.flush()
+    return render(request, 'registration/logout.html')
 
 
 def post_list(request):
@@ -27,7 +52,7 @@ def author_list(request, id, value):
     return render(request, 'blog/author_list.html', {'list': list, 'author': value})
 
 
-#@login_required
+# @login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -42,24 +67,21 @@ def post_new(request):
     return render(request, 'blog/post_new.html', {'form': form})
 
 
-def register(request):
-    if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid():
-            # Создание нового юзера, но пока без сохранения (commit=False).
-            new_user = user_form.save(commit=False)
-            # Установка выбранного пароля.
-            new_user.set_password(user_form.cleaned_data['password'])
-            # Сохранение юзера.
-            new_user.save()
-            return redirect('login')
+def delete(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.delete()
+    return redirect('post_list')
+
+
+def post_edit(request, pk):
+    post = Post.objects.get(pk=pk)
+
+    if request.method == "POST":
+        post.title = request.POST.get("title")
+        post.text = request.POST.get("text")
+        post.author = request.user
+        post.published_date = timezone.now()
+        post.save()
+        return redirect('post_detail', pk=post.pk)
     else:
-        user_form = UserRegistrationForm()
-    return render(request, 'registration/register.html', {'user_form': user_form})
-
-
-#@login_required
-def logout(request):
-    request.session.flush()
-    return render(request, 'registration/logout.html')
-
+        return render(request, "blog/edit.html", {"post": post})

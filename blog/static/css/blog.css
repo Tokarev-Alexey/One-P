@@ -136,7 +136,18 @@ button:active, button:focus, input:active, input:focus, textarea:active, textare
     box-shadow:4px 4px 10px rgba(0,0,0,0.4);
     height:200px;
     width: 600px;
+}
 
+.form-text input{
+    font-family: 'Marck Script', cursive;
+    margin-top: 20px;
+    resize: vertical;
+    padding:15px;
+    border-radius:10px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+    height:200px;
+    width: 600px;
 }
 
 .form-username input{
@@ -204,5 +215,18 @@ button:active, button:focus, input:active, input:focus, textarea:active, textare
 }
 
 .reg a:hover{
+    color: 908d8d;
+}
+
+.edit h2 a, .edit h2, .delete h2 a, .delete h2{
+    text-decoration: none;
+    color: #010400;
+    font-family: 'Lobster', cursive;
+    font-size: 15px;
+    float: left;
+    margin: 6px 6px 0px 0px;
+}
+
+.edit a:hover, .delete a:hover{
     color: 908d8d;
 }

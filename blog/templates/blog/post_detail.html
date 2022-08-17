@@ -10,5 +10,9 @@
                 {{ post.published_date }}
             </div>
         {% endif %}
+        {% if post.author == request.user %}
+        <div class="edit"><h2><a href="{% url 'post_edit' pk=post.pk %}">edit</a></h2></div>
+        <div class="delete"><h2><a href="{% url 'delete' pk=post.pk %}">delete</a></h2></div>
+        {% endif %}
     </div>
 {% endblock %}
