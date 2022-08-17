@@ -24,8 +24,8 @@ class PostForm(forms.ModelForm):
 
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
+    password = forms.CharField()
+    password2 = forms.CharField()
 
     class Meta:
         model = User

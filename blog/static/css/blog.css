@@ -1,7 +1,7 @@
 .page-header {
     background-color: 000102;
-    margin-top: 0;
-    padding: 20px 20px 20px 40px;
+    padding: 10px 0px 0px 40px;
+    margin: 0;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
@@ -9,11 +9,51 @@
     font-size: 36pt;
     text-decoration: none;
     font-family: 'Lobster', cursive;
-    padding-bottom: 0px;
-    margin-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+    top: 15px;
 }
-.page-header h1 a:hover {
+
+.my-page a, .my-page  {
+    color: #ffffff;
+    font-size: 15px;
+    float: right;
+    margin: 0px;
+    font-family: 'Lobster', cursive;
+    margin: 18px 8px 0px 0px;
+}
+
+.top-menu a, .top-menu {
+    color: #ffffff;
+    font-size: 15pt;
+    float: right;
+    margin: 18px -10px 0px 0px;
+}
+
+.page-header h1 a:hover, .top-menu a:hover, .my-page a:hover, .exit a:hover, .enter a:hover{
     color: 908d8d;
+    text-decoration: none;
+}
+ .a a: hover {
+    color: 908d8d;
+    text-decoration: none;
+ }
+.exit, .enter, .exit a, .enter a{
+    color: #ffffff;
+    font-size: 15px;
+    float: right;
+    margin:-5px 5px 0px 0px;
+    font-family: 'Lobster', cursive;
+}
+
+h1 {
+    color: #010400;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+}
+
+h2, h3 {
+    margin: 0px;
 }
 
 .content {
@@ -26,12 +66,6 @@
     font-size: 110%
 }
 
-h1 {
-    color: #010400;
-    font-family: 'Lobster', cursive;
-    font-size: 30px;
-}
-
 .save  {
     float: left;
     font-family: 'Marck Script', cursive;
@@ -41,18 +75,6 @@ h1 {
 button:active, button:focus, input:active, input:focus, textarea:active, textarea:focus {
   outline: none !important;
 }
-
-.top-menu, .top-menu:visited {
-    color: #ffffff;
-    float: right;
-    font-size: 20pt;
-    margin-right: 0px;
-}
-
-.top-menu:hover{
-    color: 908d8d;
-}
-
 
 .post {
     margin-bottom: 70px;
@@ -94,7 +116,7 @@ button:active, button:focus, input:active, input:focus, textarea:active, textare
 }
 
 .form-title input{
-font-family: 'Marck Script', cursive;
+    font-family: 'Marck Script', cursive;
     resize: vertical;
     padding:15px;
     border-radius:10px;
@@ -115,4 +137,72 @@ font-family: 'Marck Script', cursive;
     height:200px;
     width: 600px;
 
+}
+
+.form-username input{
+    padding:15px;
+    border-radius:10px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+    height:20px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.form-password input{
+    padding:15px;
+    border-radius:10px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+    height:20px;
+    width: 200px;
+}
+
+.form-username p, .form-password p {
+    font-family: 'Marck Script', cursive;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.logged-out h1 {
+    margin: 80px 0px 0px 500px;
+}
+
+.regname p, .regemail p, .regpass p, .regpass2 p {
+    font-family: 'Marck Script', cursive;
+    font-size: 15px;
+    margin: 0px 0px 0px 5px;
+}
+
+.regname input, .regemail input, .regpass input {
+    padding:15px;
+    border-radius:10px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+    height:20px;
+    width: 200px;
+    margin-bottom:10px;
+}
+
+.regpass2 input {
+    padding:15px;
+    border-radius:10px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+    height:20px;
+    width: 200px;
+    margin-bottom:0px;
+}
+
+.reg h1 a, .reg h1{
+    text-decoration: none;
+    color: #010400;
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+    float: left;
+    margin: 6px 0px 0px 10px;
+}
+
+.reg a:hover{
+    color: 908d8d;
 }

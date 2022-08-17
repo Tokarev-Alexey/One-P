@@ -1,12 +1,27 @@
 {% extends "blog/base.html" %}
 
-
 {% block content %}
     <h1>Create an account</h1>
     <p>Please, sign up using the following form:</p>
     <form action="." method="post">
-        {{ user_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Create my account"></p>
+        <div class="regname">
+            <p>Username:</p>
+            {{ user_form.username }}
+        </div>
+        <div class="regemail">
+            <p>Email adress:</p>
+            {{ user_form.email }}
+        </div>
+        <div class="regpass">
+            <p>Password:</p>
+            {{ user_form.password }}
+        </div>
+        <div class="regpass2">
+            <p>Repeat password:</p>
+            {{ user_form.password2 }}
+        </div>
+        <input type="hidden" name="next" value="{{ next }}"/>
+        <button type="submit" class="save btn btn-default">Create my account</button>
     </form>
 {% endblock %}

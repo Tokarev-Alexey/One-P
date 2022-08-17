@@ -1,5 +1,5 @@
+{% extends "blog/base.html" %}
 
-{% block title %}Log-in{% endblock %}
 {% block content %}
     <h1>Log-in</h1>
     {% if form.errors %}
@@ -12,10 +12,20 @@
     {% endif %}
     <div class="login-form">
         <form action="{% url 'login' %}" method="post">
-            {{ form.as_p }}
             {% csrf_token %}
+            <div class="form-username">
+                <p>Username:</p>
+            {{ form.username }}
+        </div>
+        <div class="form-password">
+            <p>Password:</p>
+            {{ form.password }}
+        </div>
             <input type="hidden" name="next" value="{{ next }}"/>
-            <p><input type="submit" value="Log-in"></p>
+            <button type="submit" class="save btn btn-default">log-in</button>
         </form>
+        <div class="reg">
+            <h1><a href="{% url 'register' %}">Or register!</a></h1>
+        </div>
     </div>
 {% endblock %}

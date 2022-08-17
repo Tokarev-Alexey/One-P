@@ -17,12 +17,17 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': post})
 
 
+def profile(request):
+    my_posts = Post.objects.filter(author=request.user).order_by('-published_date')
+    return render(request, 'accounts/profile.html', {'my_posts': my_posts})
+
+
 def author_list(request, id, value):
     list = Post.objects.filter(author_id=id).order_by('-published_date')
     return render(request, 'blog/author_list.html', {'list': list, 'author': value})
 
 
-@login_required
+#@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -34,7 +39,7 @@ def post_new(request):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
+    return render(request, 'blog/post_new.html', {'form': form})
 
 
 def register(request):
@@ -47,15 +52,14 @@ def register(request):
             new_user.set_password(user_form.cleaned_data['password'])
             # Сохранение юзера.
             new_user.save()
-            return render(request, 'registration/login.html', {'new_user': new_user})
-#            return redirect('post_list.html')
+            return redirect('login')
     else:
         user_form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'user_form': user_form})
-#    return redirect('post_list.html')
 
 
 #@login_required
-
 def logout(request):
+    request.session.flush()
     return render(request, 'registration/logout.html')
+
