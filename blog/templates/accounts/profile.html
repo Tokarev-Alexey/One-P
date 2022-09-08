@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {% for post in my_posts %}
+    {% for post in page_obj %}
         <div class="post">
             <div class="author"> Author: {{ post.author }}</div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>

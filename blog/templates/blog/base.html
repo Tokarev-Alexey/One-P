@@ -23,11 +23,30 @@
         </div>
         <div class="content container">
             <div class="row">
+
                 <div class="col-md-8">
                 {% block content %}
                 {% endblock %}
                 </div>
             </div>
+        {% if page_obj %}
+        <div class="pagination">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo;&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">&laquo; previous</a>
+                    {% endif %}
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next &raquo;</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;&raquo;</a>
+                    {% endif %}
         </div>
+            <form class="formP">
+                <p>Entries on the page:</p>
+                <p><input class="paginator" name="pag" placeholder="5 - 100" type="number" min="5" max="100" step="5" value="text"></p>
+                <p1><button type="submit" class="save btn btn-default">Sort</button></p1>
+            </form>
+        </div>
+        {% endif %}
     </body>
 </html>

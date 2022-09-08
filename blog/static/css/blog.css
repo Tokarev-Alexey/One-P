@@ -72,6 +72,7 @@ h2, h3 {
     margin-top: 20px;
     box-shadow:4px 4px 10px rgba(0,0,0,0.4);
 }
+
 button:active, button:focus, input:active, input:focus, textarea:active, textarea:focus {
   outline: none !important;
 }
@@ -229,4 +230,49 @@ button:active, button:focus, input:active, input:focus, textarea:active, textare
 
 .edit a:hover, .delete a:hover{
     color: 908d8d;
+}
+
+.pagination {
+    color: #010400;
+    font-family: 'Lobster', cursive;
+    font-size: 110%;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #010400;
+    font-family: 'Marck Script', cursive;
+    font-size: 110%;
+    margin: 0px 5px 0px 5px;
+}
+
+.pagination a:hover {
+    color: 908d8d;
+}
+
+.pageof {
+    color: #010400;
+    font-family: 'lobster', cursive;
+    font-size: 110%;
+    margin: 0px;
+    float: left;
+}
+
+.formP p{
+    font-family: 'Marck Script', cursive;
+    font-size: 18px;
+    float: left;
+    margin: 0px 10px 10px 0px;
+}
+
+.formP p1{
+    font-size: 25px;
+    float: left;
+    margin: -21px 10px 10px 0px;
+}
+
+input[type="number" i] {
+    padding: 1px 2px;
+    font-size: 18px;
+    width: 72px;
 }
