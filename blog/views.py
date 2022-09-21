@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, UserRegistrationForm
+from .forms import PostForm, UserRegistrationForm, CommentForm
 from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.utils import timezone
-from .models import Post
+from .models import Post, Comment
 
 
 def paginator(request, value, namber):
@@ -11,11 +11,10 @@ def paginator(request, value, namber):
         namber = 5
     else:
         namber = namber
-    paginator = Paginator(value, namber)  # Show 5 contacts per page.
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    print(page_number)
-    return page_obj
+        paginator = Paginator(value, namber)  # Show 5 contacts per page.
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return page_obj
 
 
 def register(request):
@@ -53,7 +52,19 @@ def author_list(request, id, value):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    comments = post.comments.filter(active=True).order_by('-created')
+    new_comment = None
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.name = request.user
+            new_comment.post = post
+            new_comment.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        comment_form = CommentForm()
+    return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
 
 
 def profile(request):

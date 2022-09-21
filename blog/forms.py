@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import TextInput, Textarea
 
-from .models import Post
+from .models import Post, Comment
 from django.contrib.auth.models import User
 
 
@@ -38,3 +38,15 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Passwords don\'t match.')
         return cd['password2']
 
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('body',)
+        widgets = {
+            'body': Textarea(attrs={
+                'class': 'form-text',
+                'style': 'width: 620px; height: 100px;',
+                'placeholder': 'Add a new comment...',
+            })
+        }

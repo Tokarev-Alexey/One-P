@@ -11,8 +11,41 @@
             </div>
         {% endif %}
         {% if post.author == request.user %}
-        <div class="edit"><h2><a href="{% url 'post_edit' pk=post.pk %}">edit</a></h2></div>
-        <div class="delete"><h2><a href="{% url 'delete' pk=post.pk %}">delete</a></h2></div>
+            <div class="edit"><h2><a href="{% url 'post_edit' pk=post.pk %}">edit</a></h2></div>
+            <div class="delete"><h2><a href="{% url 'delete' pk=post.pk %}">delete</a></h2></div>
         {% endif %}
+        <div class="comment_count">
+            {% if comments.count > 0 %}
+            {% with comments.count as total_comments %}
+        <h2>
+            {{ total_comments }} comment{{ total_comments|pluralize }}
+        </h2>
+            {% endwith %}
+            {% endif %}
+        </div>
     </div>
+
+    <div class="comment_list">
+        <div class="comment">
+        {% for comment in comments %}
+                <h1>{{ comment.name }}</h1>
+                <div class="comment_body">{{ comment.body|linebreaks }}</div>
+                <h2>{{ comment.created }}</h2>
+        {% empty %}
+            <h1>There are no comments.</h1>
+        {% endfor %}
+        </div>
+        <div>
+            <form action="." method="post">
+                <div class="form-text">
+                {{ comment_form.body }}
+                </div>
+                {% csrf_token %}
+                <div class="comment_button">
+                <button type="submit" class="save btn btn-default">Add comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}
