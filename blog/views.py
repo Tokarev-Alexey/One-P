@@ -3,7 +3,14 @@ from .forms import PostForm, UserRegistrationForm, CommentForm
 from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.utils import timezone
-from .models import Post, Comment
+from .models import Post
+from rest_framework import viewsets
+from .serializers import PostSerializer
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all().order_by('-published_date')
+    serializer_class = PostSerializer
 
 
 def paginator(request, value, namber):
@@ -94,7 +101,7 @@ def post_edit(request, pk):
         post.title = request.POST.get("title")
         post.text = request.POST.get("text")
         post.author = request.user
-        post.published_date = timezone.now()
+        post.created_date = timezone.now()
         post.save()
         return redirect('post_detail', pk=post.pk)
     else:

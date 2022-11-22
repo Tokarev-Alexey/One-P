@@ -6,7 +6,7 @@ admin.site.register(Post)
 admin.site.register(Comment)
 
 
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'post', 'created', 'active')
-    list_filter = ('active', 'created', 'updated')
-    search_fields = ('name', 'body')
+#class CommentAdmin(admin.ModelAdmin):
+#    list_display = ('name', 'post', 'created', 'active')
+#    list_filter = ('active', 'created', 'updated')
+#    search_fields = ('name', 'body')
