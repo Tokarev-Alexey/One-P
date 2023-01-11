@@ -5,11 +5,12 @@ from django.utils import timezone
 
 class Post(models.Model):
     objects = None
+    id = models.CharField
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
+    published_date = models.DateTimeField(default=timezone.now)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -29,7 +30,7 @@ class Comment(models.Model):
     active = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('created',) # == order_by('created_date')
 
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name, self.post)

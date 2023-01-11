@@ -4,24 +4,6 @@ from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.utils import timezone
 from .models import Post
-from rest_framework import viewsets
-from .serializers import PostSerializer
-
-
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all().order_by('-published_date')
-    serializer_class = PostSerializer
-
-
-def paginator(request, value, namber):
-    if namber == '':
-        namber = 5
-    else:
-        namber = namber
-        paginator = Paginator(value, namber)  # Show 5 contacts per page.
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        return page_obj
 
 
 def register(request):
@@ -45,16 +27,30 @@ def logout(request):
     return render(request, 'registration/logout.html')
 
 
+def paginator(request, object_list, per_page):
+    paginator = Paginator(object_list, per_page)  # Show 5 contacts per page.
+    per_page = request.GET.get('pag')
+    page_obj = paginator.get_page(per_page)
+    return page_obj
+
+
 def post_list(request):
     posts = Post.objects.all().order_by('-published_date')
-    namber = request.GET.get('pag', 5)
-    return render(request, 'blog/post_list.html', {'page_obj': paginator(request, posts, namber)})
+    per_page = request.GET.get('pag', 5)
+    return render(request, 'blog/post_list.html', {'page_obj': paginator(request, posts, per_page)})
+
+
+def profile(request):
+    my_posts = Post.objects.filter(author=request.user).order_by('-published_date')
+    per_page = request.GET.get('pag', 5)
+    return render(request, 'accounts/profile.html', {'page_obj': paginator(request, my_posts, per_page)})
+
 
 
 def author_list(request, id, value):
     list = Post.objects.filter(author_id=id).order_by('-published_date')
-    namber = request.GET.get('pag', 5)
-    return render(request, 'blog/author_list.html', {'page_obj': paginator(request, list, namber), 'author': value})
+    per_page = request.GET.get('pag', 5)
+    return render(request, 'blog/author_list.html', {'page_obj': paginator(request, list, per_page), 'author': value})
 
 
 def post_detail(request, pk):
@@ -74,13 +70,6 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
 
 
-def profile(request):
-    my_posts = Post.objects.filter(author=request.user).order_by('-published_date')
-    namber = request.GET.get('pag', 5)
-    return render(request, 'accounts/profile.html', {'page_obj': paginator(request, my_posts, namber)})
-
-
-# @login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -109,6 +98,6 @@ def post_edit(request, pk):
 
 
 def delete(request, pk):
-    post = Post.objects.get(pk=pk)
+    post = Post.objects.get(pk=pk) #request_pk = pk
     post.delete()
     return redirect('post_list')
