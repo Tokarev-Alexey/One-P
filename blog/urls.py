@@ -1,17 +1,8 @@
-import blog
-from blog.RestAPI.APIViews import PostViewSet, CommentViewSet
 from django.urls import path, include
-from rest_framework import routers
 from . import views
 
-router = routers.DefaultRouter()
-router.register(r'posts', PostViewSet)
-router.register(r'comments', CommentViewSet)
 
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-
     path('', views.post_list, name='post_list'),
     path('post/<int:pk>/', views.post_detail, name='post_detail'),
     path('post/new/', views.post_new, name='post_new'),
@@ -24,10 +15,3 @@ urlpatterns = [
     path('accounts/profile/', views.profile, name='profile'),
 
 ]
-
-
-# urlpatterns = [
-#     #path('posts/', views.PostViewSet.as_view({'get': 'list'}))
-#
-#
-# ]
