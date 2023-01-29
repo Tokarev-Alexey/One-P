@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
+
 
 
 class Post(models.Model):
@@ -35,3 +37,12 @@ class Comment(models.Model):
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name, self.post)
 
+
+class Follow(models.Model):
+    objects = None
+    # пользователь, который подписывается
+    user = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
+    # пользователь, на которого подписывются
+    author = models.ForeignKey(User, related_name='followers', on_delete=models.CASCADE)
+    def __str__(self):
+        return '{} подписан на {}'.format(self.user, self.author)

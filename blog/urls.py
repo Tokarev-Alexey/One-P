@@ -13,5 +13,8 @@ urlpatterns = [
     path('accounts/logout/', views.logout, name='logout'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/profile/', views.profile, name='profile'),
+    path('author_follow/', views.subscribed_to, name='subscribed_to'),
+    path('follow_create/<author>/', views.subscribe, name='subscribe'),
+    path('follow_delete/<author>/', views.unsubscribe, name='unsubscribe'),
 
 ]

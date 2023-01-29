@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="title_author"><h1> Follows: {{ user }} </h1></div>
+    {% for i in subscribers %}
+        <div class="post">
+            <h1><a href="{% url 'author_list' id=i.author_id value=i.author %}">{{ i.author }}</a></h1>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -113,7 +113,19 @@ button:active, button:focus, input:active, input:focus, textarea:active, textare
 
 .title_author h1 {
     float: right;
+}
 
+.subscription a{
+    color: #010400;
+    font-size: 15px;
+    float: right;
+    font-family: 'Lobster', cursive;
+    margin: 30px 310px 0px 0px;
+}
+
+.subscription a:hover {
+    color: 908d8d;
+    text-decoration: none;
 }
 
 .form-title input{

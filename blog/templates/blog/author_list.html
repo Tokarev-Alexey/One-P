@@ -1,5 +1,17 @@
 {% extends 'blog/base.html' %}
-
+{% block func %}
+    <div class="subscription">
+            {% if request.user.is_authenticated %}
+                {% if author != request.user.username %}
+                    {% if not subscribers %}
+                        <p><a href="{% url 'subscribe' author=author %}">Subscribe</a></p>
+                    {% elif subscribers %}
+                        <p><a href="{% url 'unsubscribe' author=author %}">Unsubscribe</a></p>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            </div>
+{% endblock %}
 {% block content %}
     <div class="title_author"><h1> All entries: {{ author }} </h1></div>
     {% for post in page_obj %}

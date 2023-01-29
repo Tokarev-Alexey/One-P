@@ -12,5 +12,4 @@ class PostSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(read_only=True, many=True)
     class Meta:
         model = Post
-        fields = ('id', 'author', 'title', 'text', 'created_date', 'published_date','comments')
-
+        fields = ('id', 'author', 'title', 'text', 'created_date', 'published_date', 'comments')

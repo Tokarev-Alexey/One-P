@@ -1,7 +1,11 @@
 {% load static %}
 <html>
     <head>
-        <title>One-P</title>
+        {% if not title %}
+        <title> Login </title>
+        {% else %}
+        <title>{{ title }}</title>
+        {% endif %}
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
@@ -17,13 +21,15 @@
             {% endif %}
             {% if request.user.is_authenticated %}
             <div class="top-menu"><a href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span></a></div>
+            <div class="my-page" ><a href="{% url 'subscribed_to' %}"> Subscriptions</a></div>
             <div class="my-page" ><a href="{% url 'profile' %}">My page</a></div>
             {% endif %}
             <h1><a href="{% url 'post_list' %}">New Blog</a></h1>
         </div>
         <div class="content container">
             <div class="row">
-
+                {% block func %}
+                {% endblock %}
                 <div class="col-md-8">
                 {% block content %}
                 {% endblock %}
