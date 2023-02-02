@@ -98,6 +98,18 @@ button:active, button:focus, input:active, input:focus, textarea:active, textare
     font-size: 130%
 }
 
+.logged-out_run a:hover {
+    color: 908d8d;
+}
+
+.logged-out_run, .logged-out_run a {
+    color: #010400;
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+    text-decoration: none;
+    margin: 10px 0px 0px 248px;
+}
+
 .author, .author a {
     color: #010400;
     float: right;
@@ -244,6 +256,19 @@ button:active, button:focus, input:active, input:focus, textarea:active, textare
     color: 908d8d;
 }
 
+.com_delete h2 a, .com delete h2, .com_delete{
+    text-decoration: none;
+    color: #010400;
+    font-family: 'Lobster', cursive;
+    font-size: 15px;
+    float: left;
+    margin: -10px 0px 0px 80px;
+}
+
+.com_delete a:hover{
+    color: 908d8d;
+}
+
 .pagination {
     color: #010400;
     font-family: 'Lobster', cursive;
@@ -330,4 +355,36 @@ input[type="number" i] {
 
 .comment_button{
     margin: -10px 0px 100px 0px;
+}
+
+.reset_page {
+    margin-top: 30px;
+}
+
+.resetemail input {
+    padding:15px;
+    border-radius:10px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+    height:20px;
+    width: 200px;
+    margin-bottom:-15px;
+}
+
+.reset-message {
+    font-family: 'Marck Script', cursive;
+    font-size: 18px;
+    float: left;
+    margin: 20px 10px 10px 0px;
+}
+
+.reset-pswd-complete a:hover {
+    color: 908d8d;
+}
+
+.reset-pswd-complete, .reset-pswd-complete a {
+    color: #010400;
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+    text-decoration: none;
 }

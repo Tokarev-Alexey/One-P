@@ -16,16 +16,19 @@
             <div class="form-username">
                 <p>Username:</p>
             {{ form.username }}
-        </div>
-        <div class="form-password">
-            <p>Password:</p>
-            {{ form.password }}
-        </div>
+            </div>
+            <div class="form-password">
+                <p>Password:</p>
+                {{ form.password }}
+            </div>
             <input type="hidden" name="next" value="{{ next }}"/>
             <button type="submit" class="save btn btn-default">log-in</button>
         </form>
         <div class="reg">
             <h1><a href="{% url 'register' %}">Or register!</a></h1>
+        </div>
+        <div class="reg">
+            <h1><a href="{% url 'password_reset' %}">I don't remember my password!</a></h1>
         </div>
     </div>
 {% endblock %}

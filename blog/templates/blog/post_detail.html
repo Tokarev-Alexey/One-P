@@ -28,9 +28,14 @@
     <div class="comment_list">
         <div class="comment">
         {% for comment in comments %}
+            <div class="post">
                 <h1>{{ comment.name }}</h1>
                 <div class="comment_body">{{ comment.body|linebreaks }}</div>
-                <h2>{{ comment.created }}</h2>
+                <div class="date">{{ comment.created }}</div>
+            {% if comment.name == request.user %}
+                <div class="com_delete"><h2><a href="{% url 'comment_delete' pk=comment.pk %}">delete</a></h2></div>
+            {% endif %}
+            </div>
         {% empty %}
             <h1>There are no comments.</h1>
         {% endfor %}

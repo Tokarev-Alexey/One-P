@@ -3,7 +3,7 @@ from .forms import PostForm, UserRegistrationForm, CommentForm
 from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.utils import timezone
-from .models import Post, Follow, User
+from .models import Post, Comment, Follow, User
 
 
 def register(request):
@@ -38,7 +38,7 @@ def paginator(request, object_list, per_page):
 
 
 def post_list(request):
-    title = 'Home page'
+    title = 'Newspaper'
     posts = Post.objects.all().order_by('-published_date')
     per_page = request.GET.get('pag', 5)
     return render(request, 'blog/post_list.html', {'page_obj': paginator(request, posts, per_page), 'title':title})
@@ -132,3 +132,8 @@ def delete(request, pk):
     post = Post.objects.get(pk=pk) #request_pk = pk
     post.delete()
     return redirect('post_list')
+
+def comment_delete(request, pk):
+    comment = Comment.objects.get(pk=pk)
+    comment.delete()
+    return redirect('post_detail', pk=comment.post_id)
