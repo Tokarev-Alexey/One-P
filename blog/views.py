@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import FileResponse
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm, UserRegistrationForm, CommentForm
 from django.core.paginator import Paginator
@@ -36,6 +37,11 @@ def paginator(request, object_list, per_page):
     per_page = request.GET.get('pag')
     page_obj = paginator.get_page(per_page)
     return page_obj
+
+
+def a(response):
+    response = FileResponse(open('Statistic.csv', 'rb'))
+    return response
 
 
 def post_list(request):
