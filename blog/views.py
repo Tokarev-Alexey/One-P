@@ -1,11 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.http import FileResponse
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, UserRegistrationForm, CommentForm
 from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.utils import timezone
+
 from .models import Post, Comment, Follow, User
+from blog.forms import PostForm, UserRegistrationForm, CommentForm
 
 
 def register(request):
@@ -37,11 +37,6 @@ def paginator(request, object_list, per_page):
     per_page = request.GET.get('pag')
     page_obj = paginator.get_page(per_page)
     return page_obj
-
-
-def a(response):
-    response = FileResponse(open('Statistic.csv', 'rb'))
-    return response
 
 
 def post_list(request):
@@ -156,3 +151,4 @@ def comment_delete(request, pk):
     comment = Comment.objects.get(pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post_id)
+

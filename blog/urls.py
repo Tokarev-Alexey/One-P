@@ -17,5 +17,4 @@ urlpatterns = [
     path('author_follow/', views.subscribed_to, name='subscribed_to'),
     path('follow_create/<author>/', views.subscribe, name='subscribe'),
     path('follow_delete/<author>/', views.unsubscribe, name='unsubscribe'),
-    path('1', views.a, name='a'),
 ]

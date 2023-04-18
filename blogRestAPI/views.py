@@ -1,5 +1,6 @@
 from rest_framework import viewsets, mixins
 from rest_framework.viewsets import GenericViewSet
+from django.http import FileResponse
 
 from .models import Post, Comment
 from blogRestAPI.serializers import PostSerializer, PostSerializerOneObject, CommentSerializer
@@ -38,3 +39,8 @@ class CommentViewSet(viewsets.ModelViewSet):
             return Comment.objects.filter(post=make).order_by('post')
         else:
             return self.queryset
+
+
+def load_statistic(response):
+    response = FileResponse(open('Statistic.csv', 'rb'))
+    return response

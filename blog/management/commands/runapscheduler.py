@@ -5,12 +5,12 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from blog.models import Post
 
 
+print('The scheduler is running! It\'s Ok!' + '\n' + 'To stop, click <Ctrl + C>')
 def my_job():
     with open('Statistic.csv', 'w', newline='') as csvfile:
         linewriter = csv.writer(csvfile, delimiter=',',  quotechar='"', quoting=csv.QUOTE_MINIMAL)
         linewriter.writerow(['author', 'count_entries', 'anoc, %']) # anoc - average number of comments
         list = Post.objects.all()
-        authors = {}
         for i in list:
             anoc = 0
             posts_author = Post.objects.filter(author_id=i.author_id)
@@ -24,11 +24,7 @@ def my_job():
 scheduler = BackgroundScheduler()
 scheduler.add_job(my_job, 'interval', seconds=5)
 
-try:
-    scheduler.start()
-except Exception as e:
-    print(e)
-    scheduler.shutdown()
+scheduler.start()
 
 while True:
     sleep(1)
