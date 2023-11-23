@@ -1,0 +1,13 @@
+.content {
+	padding-top: 40px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+	background: url('/static/images/fon.jpg') 50%/cover no-repeat fixed;
+}
+
+
+.content_container {
+		top: 40px;
+    flex: 1 1 auto;
+		width: 70%;
+}

@@ -32,9 +32,9 @@ def logout(request):
     return render(request, 'registration/logout.html', {'title':title})
 
 
-def paginator(request, object_list, per_page):
-    paginator = Paginator(object_list, per_page)  # Show 5 contacts per page.
-    per_page = request.GET.get('pag')
+def paginator(request, object_list, page):
+    paginator = Paginator(object_list, page)  # Show 5 contacts per page.
+    per_page = request.GET.get('page')
     page_obj = paginator.get_page(per_page)
     return page_obj
 
