@@ -2,16 +2,16 @@
 
 {% block content %}
 <h1 xmlns="http://www.w3.org/1999/html">Edit Post</h1>
-    <form method="POST" class="post-form">
-        {% csrf_token %}
-        <div class="form-title">
-            <input type="text" placeholder="Title" name="title" value="{{ post.title }}" />
-        </div>
-        <div class="form-text">
-            <textarea name="text" placeholder="Text">{{ post.text }}</textarea>
-        </div>
-        <div>
-            <button type="submit" class="save btn btn-default">Save</button>
-        </div>
-    </form>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <div class="form-title">
+        <input type="text" placeholder="Title" name="title" value="{{ post.title }}"/>
+    </div>
+    <div class="form-text">
+        <textarea name="text" placeholder="Text">{{ post.text }}</textarea>
+    </div>
+    <div>
+        <button type="submit" class="save btn btn-default">Save</button>
+    </div>
+</form>
 {% endblock %}

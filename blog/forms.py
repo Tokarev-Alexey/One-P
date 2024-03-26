@@ -6,19 +6,27 @@ from django.contrib.auth.models import User
 
 
 class PostForm(forms.ModelForm):
-
     class Meta:
         model = Post
         fields = ('title', 'text',)
         widgets = {
             'title': TextInput(attrs={
-                'class': 'form-title',
-                'style': 'max-width: 600px;',
+                'style': 'width: 100%;'
+                         'padding: 5px;'
+                         'border-radius: 10px;'
+                         'background-color: #333;'
+                         'color: #ccc;'
+                         'font-size: 15px;',
                 'placeholder': 'Title',
             }),
             'text': Textarea(attrs={
-                'class': 'form-text',
-                'style': 'max-width: 600px;',
+                'style': 'width: 100%;'
+                         'padding: 5px;'
+                         'margin: 10px 0px 10px 0px;'
+                         'border-radius: 10px;'
+                         'background-color: #333;'
+                         'color: #ccc;'
+                         'font-size: 15px;',
                 'placeholder': 'Text',
             })
         }
@@ -46,7 +54,13 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'body': Textarea(attrs={
                 'class': 'form-text',
-                'style': 'width: 620px; height: 100px;',
-                'placeholder': 'Add a new comment...',
+                'style': 'width: 100%;'
+                         'padding: 5px;'
+                         'margin: 10px 0px 10px 0px;'
+                         'border-radius: 10px;'
+                         'background-color: #333;'
+                         'color: #ccc;'
+                         'font-size: 15px;',
+                'placeholder': 'Add a new comment...'
             })
         }

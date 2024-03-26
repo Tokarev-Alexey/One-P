@@ -44,29 +44,29 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 /*Основная часть*/
 
-a {color: #191a19;}
-
-.page {
-  display:flex;
-  flex-direction:column;
-	justify-content: space-between;
-  height: 100%;
-
-
+a{color:#fff;}
+h1 {
+    color: #fff;
+    font-size: 20px;
 }
 
-		.headder {
+.page {
+  display: flex;
+  flex-direction:column;
+  height: 100%;
+}
+
+		.header {
 		    position: fixed;
 		    display: flex;
-		    justify-content: space-between;
 		    align-items:center;
 		    height: 40px;
 		    box-sizing: border-box;
-	      width: 100%;
+	      	width: 100%;
 		    font-family: 'Ubuntu', sans-serif;
 		    padding-left: 12px;
-		    background-color: #fff;
-
+		    background-color: #303030;
+		    box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.50);
 		}
 
 				.start_page {
@@ -75,22 +75,27 @@ a {color: #191a19;}
 					width: 125px;
 					height: 40px;
 					margin-right: 50px;
-					font-size: 25px;
-					font-weight: bold;
 					transition: .5s;
 				}
-        .start_page:hover{
-            transform: scale(1.1);
-        }
+				.start_page h1{
+				    font-size: 25px;
+				    font-weight: bold;
+				}
+                .start_page:hover{
+                    transform: scale(1.1);
+                }
 
+				.search-box {
+					display: flex;
+					justify-content: flex-end;
+					flex: 1 1 auto;
+				}
 				input[type=search]{
-					position: relative;
-					right: -37vw;
+					right: 0;
 					color: #191a19;
 					font-size: 15px;
 					height: 30px;
 					padding-left: 10px;
-					display: flex;
 					align-items:center;
 					border-radius: 10px;
 					background-color: #919191dd;
@@ -124,7 +129,7 @@ a {color: #191a19;}
 							right: 0;
 						}
 							ul li ul li{
-								background-color: #fffd;
+								background-color: #303030;
 								padding: 3px 5px 0px 5px;
 								margin: 0px 5px 5px 0px;
 								border-radius: 5px;
@@ -137,10 +142,39 @@ a {color: #191a19;}
 /*------------------------------------------------*/
 
 		.footer {
-		  height: 80px;
-			font-family: 'Ubuntu', sans-serif;
-		  font-size: 25px;
-			color: #fff;
+            font-family: 'Ubuntu', sans-serif;
+		    font-size: 20px;
 			padding-left: 12px;
-			justify-content: flex-end;
+			color: #fff;
+			background-color: #303030;
 		}
+
+		.pagination{
+		    width: 35%;
+		}
+
+		.coordination{
+		    margin: 5px 0px 5px 0px;
+		}
+
+		.form-Pagination{
+		    display: flex;
+		    margin: 5px 0px 5px 0px;
+		}
+
+		.paginator{
+		    margin: 0px 5px 0px 5px;
+		}
+
+html::-webkit-scrollbar {
+      width: 10px;
+   }
+
+html::-webkit-scrollbar-track {
+    background-color: black;
+  }
+
+html::-webkit-scrollbar-thumb {
+    background: #4e4e4e;
+    border-radius: 25px;
+  }

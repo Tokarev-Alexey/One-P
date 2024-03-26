@@ -1,0 +1,41 @@
+.form-block {
+    width: 100%;
+    display: flex;
+	flex-direction: column;
+	align-items:center;
+}
+.button-div{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-text{
+    width: 80%;
+}
+
+.save{
+    border: solid;
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: #222;
+    padding: 5px;
+    font-size: 15px;
+    color: #ccc;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea::-webkit-scrollbar {
+      width: 10px;
+   }
+
+textarea::-webkit-scrollbar-track {
+    background-color: black;
+  }
+
+textarea::-webkit-scrollbar-thumb {
+    background: #4e4e4e;
+    border-radius: 25px;
+  }
