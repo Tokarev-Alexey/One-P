@@ -1,3 +1,16 @@
+.login-form input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 5px;
+    margin: 5px 0px 5px 0px;
+    border-radius: 10px;
+    background-color: #333 ;
+    color: #ccc;
+    font-size: 15px;
+}
+
 .form-block {
     width: 100%;
     display: flex;
@@ -13,6 +26,24 @@
     width: 80%;
 }
 
+.edit-title input{
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #333;
+    color: #ccc;
+    font-size: 15px;
+}
+
+.edit-text textarea{
+     width: 100%;
+     padding: 5px;
+     margin: 10px 0px 10px 0px;
+     border-radius: 10px;
+     background-color: #333;
+     color: #ccc;
+     font-size: 15px;
+}
 .save{
     border: solid;
     border-radius: 10px;

@@ -39,6 +39,18 @@ class UserRegistrationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email')
+        widgets = {
+            'username': TextInput(attrs={
+                'style': 'width: 100%;'
+                         'display: flex;'
+                         'flex-direction: column;'
+                         'align-items:center;'
+                         'padding: 5px;'
+                         'margin: 5px 0px 5px 0px;'
+                         'border-radius: 10px;'
+                         'background-color: #333;'
+                         'color: #ccc;'
+                         'font-size: 15px;'})}
 
     def clean_password2(self):
         cd = self.cleaned_data

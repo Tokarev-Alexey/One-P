@@ -1,17 +1,20 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<h1 xmlns="http://www.w3.org/1999/html">Edit Post</h1>
-<form method="POST" class="post-form">
-    {% csrf_token %}
-    <div class="form-title">
-        <input type="text" placeholder="Title" name="title" value="{{ post.title }}"/>
-    </div>
-    <div class="form-text">
-        <textarea name="text" placeholder="Text">{{ post.text }}</textarea>
-    </div>
-    <div>
-        <button type="submit" class="save btn btn-default">Save</button>
-    </div>
-</form>
+<div class="heading"><h1>Edit Post</h1></div>
+
+<div class="form-block">
+    <form method="POST" class="form-text">
+        {% csrf_token %}
+        <div class="edit-title">
+            <input type="text" placeholder="Title" name="title" value="{{ post.title }}"/>
+        </div>
+        <div class="edit-text">
+            <textarea name="text" placeholder="Text" cols="40" rows="20">{{ post.text }}</textarea>
+        </div>
+        <div class="button-div">
+            <button type="submit" class="save btn btn-default">Save</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

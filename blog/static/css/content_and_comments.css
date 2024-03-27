@@ -141,6 +141,10 @@
         width: 60vw;
         min-width: 800px;
     }
+    .the-standard-block #p1{
+    display: flex;
+    justify-content: center;
+    }
 /*COMMENTS STYLE*/
 
 .comment_count {

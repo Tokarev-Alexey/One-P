@@ -1,34 +1,45 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-    <h1>Log-in</h1>
-    {% if form.errors %}
-        <p>
-            Your username and password didn't match.
-            Please try again.
-        </p>
-    {% else %}
-        <p>Please, use the following form to log-in:</p>
-    {% endif %}
-    <div class="login-form">
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <div class="form-username">
-                <p>Username:</p>
+<div class="heading"><h1>Log-in</h1></div>
+{% if form.errors %}
+<div class="heading"><h1>
+    Your username and password didn't match.
+    Please try again.
+</h1></div>
+{% else %}
+<div class="heading"><h1>Please, use the following form to log-in:</h1></div>
+{% endif %}
+
+<div class="login-form">
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="login-form">
+            <h1>Username:</h1>
             {{ form.username }}
-            </div>
-            <div class="form-password">
-                <p>Password:</p>
-                {{ form.password }}
-            </div>
-            <input type="hidden" name="next" value="{{ next }}"/>
+        </div>
+
+        <div class="login-form">
+            <h1>Password:</h1>
+            {{ form.password }}
+        </div>
+
+        <input type="hidden" name="next" value="{{ next }}"/>
+
+        <div class="button-div">
             <button type="submit" class="save btn btn-default">log-in</button>
-        </form>
-        <div class="reg">
-            <h1><a href="{% url 'register' %}">Or register!</a></h1>
         </div>
-        <div class="reg">
-            <h1><a href="{% url 'password_reset' %}">I don't remember my password!</a></h1>
+    </form>
+
+    <a href="{% url 'register' %}">
+        <div class="the-standard-block">
+            <div id="p1"><h1>Or register!</h1></div>
         </div>
-    </div>
+    </a>
+    <a href="{% url 'password_reset' %}">
+        <div class="the-standard-block">
+            <h1>I don't remember my password!</h1>
+        </div>
+    </a>
+</div>
 {% endblock %}
