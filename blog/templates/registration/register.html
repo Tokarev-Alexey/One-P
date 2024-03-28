@@ -26,8 +26,10 @@
             <h1>Repeat password:</h1>
             {{ user_form.password2 }}
         </div>
-        <input type="hidden" name="next" value="{{ next }}"/>
-        <button type="submit" class="save btn btn-default">Create my account</button>
+        <div class="button-div">
+            <input type="hidden" name="next" value="{{ next }}"/>
+            <button type="submit" class="save btn btn-default">Create my account</button>
+        </div>
     </form>
 </div>
 {% endblock %}

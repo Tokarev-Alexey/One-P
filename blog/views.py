@@ -20,6 +20,7 @@ def register(request):
             # Сохранение юзера.
             new_user.save()
             return redirect('login')
+        return render(request, 'registration/register.html', {'user_form': user_form})
     else:
         user_form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'user_form': user_form, 'title': title_registration})
