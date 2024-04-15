@@ -20,7 +20,6 @@ def register(request):
             # Сохранение юзера.
             new_user.save()
             return redirect('login')
-        return render(request, 'registration/register.html', {'user_form': user_form})
     else:
         user_form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'user_form': user_form, 'title': title_registration})
@@ -78,7 +77,6 @@ def profile(request):
 def post_list(request):
     title = 'Newspaper'
     posts = Post.objects.all().order_by('-published_date')
-    print(posts.values('id'))
     per_page = request.GET.get('pag', 5)
     return render(request, 'blog/post_list.html', {'page_obj': paginator(request, posts, per_page), 'title': title})
 

@@ -3,29 +3,33 @@
 {% block content %}
 <div class="heading"><h1>Create an account</h1></div>
 <div class="heading"><h1>Please, sign up using the following form:</h1></div>
-
 <div class="login-form">
     <form action="." method="post">
         {% csrf_token %}
         <div class="login-form">
             <h1>Username:</h1>
             {{ user_form.username }}
+            {{ user_form.username.errors }}
         </div>
 
         <div class="login-form">
             <h1>Email adress:</h1>
             {{ user_form.email }}
+            {{ user_form.email.errors }}
         </div>
 
         <div class="login-form">
             <h1>Password:</h1>
             {{ user_form.password }}
+            {{ user_form.password.errors }}
         </div>
-
         <div class="login-form">
             <h1>Repeat password:</h1>
             {{ user_form.password2 }}
+            {{ user_form.password2.errors }}
         </div>
+        {{ user_form.non_field_errors }}
+
         <div class="button-div">
             <input type="hidden" name="next" value="{{ next }}"/>
             <button type="submit" class="save btn btn-default">Create my account</button>
