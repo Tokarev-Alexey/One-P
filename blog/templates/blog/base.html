@@ -7,9 +7,9 @@
     <title>{{ title }}</title>
     {% endif %}
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/content_and_comments.css' %}">
-    <link rel="stylesheet" href="{% static 'css/form_and_button_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/content_and_comments.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form_and_button_style.css' %}">
 </head>
 <body>
 <div class="page">
@@ -104,6 +104,7 @@
     </div>
 
     <div class="content">
+        <div class="buttom-viv">Buttom-div</div>
         <div class="content_container">
             {% block func %}
             {% endblock %}

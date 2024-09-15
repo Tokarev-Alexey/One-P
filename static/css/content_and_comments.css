@@ -7,6 +7,12 @@
 	background: url('/static/images/Untitled1.svg')0 0/447px auto repeat fixed;
 }
 
+.buttom-viv{
+    display: block;
+    position: sticky;
+    width: max-content;
+}
+
 .content_container{
     min-height: 100vh;
 	width: 60vw;
