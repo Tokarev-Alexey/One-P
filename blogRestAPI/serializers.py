@@ -1,5 +1,24 @@
 from rest_framework import serializers
-from .models import Post, Comment
+from .models import Post, Comment, User
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    password = serializers.CharField(write_only=True)
+
+    def create(self, validated_data):
+
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            password=validated_data['password'],
+        )
+
+        return user
+
+    class Meta:
+        model = User
+        # Tuple of serialized model fields (see link [2])
+        fields = ( 'id', 'username', 'password', )
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -8,15 +27,6 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ('id', 'post', 'name', 'body', 'created', 'updated')
 
 
-# class PostSerializer(serializers.Serializer):
-#     id = serializers.IntegerField()
-#     author = serializers.CharField()
-#     title = serializers.CharField(max_length=200)
-#     text = serializers.CharField()
-#     created_date = serializers.DateTimeField(read_only=True)
-#     published_date = serializers.DateTimeField(read_only=True)
-#     def create(self, validated_data):
-#         return Post.objects.create(**validated_data)
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post

@@ -4,8 +4,13 @@ from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.utils import timezone
 
-from .models import Post, Comment, Follow, User
+from .models import Post, Comment, Follow, Person
+from django.conf import settings
+
 from blog.forms import PostForm, UserRegistrationForm, CommentForm
+
+
+# User = settings.AUTH_USER_MODEL
 
 
 def register(request):
@@ -48,7 +53,7 @@ def subscribed_to(request):
 
 @login_required
 def subscribe(request, author):
-    subscriber_name = User.objects.get(username=author)
+    subscriber_name = Person.objects.get(username=author)
     # исключаем повторное добавление записи в таблицу
     if not Follow.objects.filter(user_id=request.user.id, author_id=subscriber_name.id).exists():
         Follow.objects.create(user_id=request.user.id, author_id=subscriber_name.id)
@@ -117,7 +122,7 @@ def post_detail(request, pk):
 
 
 @login_required
-def post_new(request):
+def post_new(request, ):
     title = 'New post'
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -125,6 +130,7 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now()
+            ###########            print(request.POST['csrfmiddlewaretoken'])
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
