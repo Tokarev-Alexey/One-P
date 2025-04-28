@@ -8,8 +8,8 @@
 1. docker build -t project .
 2. docker run --rm -p 8000:8000 project
 
-LOGIN: admin
-PASSWORD: parol0000
+LOGIN: oneuser
+PASSWORD: onepassword
 
 Планировщик возможно проверить только в развернутом настольном варианте, запустив его в отдельном окне терминала.
 База данных локальная, отдельную для контейнера не создавал.
@@ -25,3 +25,10 @@ api/comments/?post=<pk>  -комментарии одного поста GET, PO
 api/api-auth/login/
 api/api-auth/logout/
 api/info/ - скачивание файла Statistic.txt
+
+запуск  с nginx:
+запускаем uwsgi в терминале pycharm:
+uwsgi --socket mysite.sock --module mysite.wsgi --chmod-socket=664
+
+если нужно перезапускаем nginx:
+sudo systemctl restart nginx

@@ -1,15 +1,10 @@
-from rest_framework import viewsets, mixins, status
-from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework import viewsets, mixins
 from rest_framework.viewsets import GenericViewSet
 from django.http import FileResponse
 from rest_framework.generics import CreateAPIView
 from .models import Post, Comment, User
 from blogRestAPI.serializers import PostSerializer, PostSerializerOneObject, CommentSerializer, UserSerializer
 from rest_framework import permissions
-
-from .renderers import UserJSONRenderer
 
 
 class CreateUserView(CreateAPIView):
@@ -26,6 +21,9 @@ class PostViewSet(mixins.CreateModelMixin,
                   GenericViewSet):
     queryset = Post.objects.all().order_by('-published_date')
     serializer_class = PostSerializer
+    permission_classes = [
+        permissions.AllowAny  # Or anon users can't register
+    ]
 
     def get_queryset(self):
         if self.request.query_params.get('author'):
